@@ -1,0 +1,7 @@
+pyTelegramBotAPI==4.14.0
+requests==2.31.0
+schedule==1.2.0
+beautifulsoup4==4.12.2
+lxml==4.9.3
+apimoex==1.5.0
+feedparser==6.0.10
