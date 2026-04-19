@@ -43,6 +43,36 @@ def get_main_keyboard():
 
 # ========== ПОЛУЧЕНИЕ ЦЕН ==========
 def get_sbmm_price():
+    # Пробуем Investing.com
+    try:
+        url = "https://ru.investing.com/etfs/sbmm"
+        headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'}
+        response = requests.get(url, headers=headers, timeout=10)
+        soup = BeautifulSoup(response.text, 'html.parser')
+        price_tag = soup.find('div', {'data-test': 'instrument-price-last'})
+        if not price_tag:
+            price_tag = soup.find('span', {'class': 'text-2xl'})
+        if price_tag:
+            price_text = price_tag.text.replace(' ', '').replace(',', '.').replace('₽', '')
+            return float(price_text)
+    except:
+        pass
+    
+    # Резервный источник: Cbonds
+    try:
+        url = "https://cbonds.ru/etf/209297/"
+        headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'}
+        response = requests.get(url, headers=headers, timeout=10)
+        if 'class="price"' in response.text:
+            start = response.text.find('class="price"')
+            start = response.text.find('>', start) + 1
+            end = response.text.find('<', start)
+            price_str = response.text[start:end].replace(' ', '').replace(',', '.').strip()
+            return float(price_str)
+    except:
+        pass
+    
+    return None
     try:
         url = "https://ru.investing.com/etfs/sbmm"
         headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'}
