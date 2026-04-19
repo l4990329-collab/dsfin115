@@ -18,9 +18,9 @@ DEEPSEEK_API_KEY = "sk-84631d70d0f1407b9a2caf2444dc35b0"
 DEEPSEEK_API_URL = "https://api.deepseek.com/v1/chat/completions"
 
 # ========== ТВОИ ДАННЫЕ ПОЧТЫ (ЗАМЕНИ ЗДЕСЬ) ==========
-IMAP_SERVER = "imap.mail.ru"
-EMAIL = "lex_novikov@inbox.ru"       # ← ЗАМЕНИ
-PASSWORD = "QBdfXfS9Nhx0b6bzrVBT"  # ← ЗАМЕНИ
+IMAP_SERVER = "imap.yandex.ru"
+EMAIL = "твоя_почта@yandex.ru"
+PASSWORD = "твой_пароль_приложения"
 
 # ========== УРОВНИ СИГНАЛОВ ==========
 SBMM_BUY_LEVEL = 17.50
